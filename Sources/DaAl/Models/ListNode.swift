@@ -9,8 +9,8 @@ import Foundation
 
 class ListNode<T> {
     
-    let value: T
-    let next: ListNode<T>?
+    var value: T
+    var next: ListNode<T>?
     
     init(
         value: T,
