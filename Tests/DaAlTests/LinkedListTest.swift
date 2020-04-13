@@ -12,9 +12,6 @@ import XCTest
 
 class LinkedListTest: XCTestCase {
     
-    var node5: ListNode<Int>!
-    var node4: ListNode<Int>!
-    var node3: ListNode<Int>!
     var node2: ListNode<Int>!
     var node1: ListNode<Int>!
     var node0: ListNode<Int>!
@@ -22,10 +19,7 @@ class LinkedListTest: XCTestCase {
     var sut: LinkedList<Int>!
     
     override func setUp() {
-        node5 = ListNode(value: 5)
-        node4 = ListNode(value: 4, next: node5)
-        node3 = ListNode(value: 3, next: node4)
-        node2 = ListNode(value: 2, next: node3)
+        node2 = ListNode(value: 2)
         node1 = ListNode(value: 1, next: node2)
         node0 = ListNode(value: 0, next: node1)
         
@@ -43,29 +37,38 @@ class LinkedListTest: XCTestCase {
         )
     }
     
+    func testCount() {
+        XCTAssertEqual(
+            sut.count(),
+            3
+        )
+    }
+    
     func testSubscript() {
-        XCTAssertNil(sut[.min])
-        XCTAssertNil(sut[.max])
-        
-        allNodes.enumerated().forEach { (index, node) in
-            XCTAssertEqual(
-                sut[index]!,
-                node
-            )
-        }
+        XCTAssertNil(
+            sut[.min]
+        )
+        XCTAssertNil(
+            sut[.max]
+        )
+        XCTAssertEqual(
+            sut[0],
+            sut.root
+        )
+        XCTAssertEqual(
+            sut[1],
+            sut.root?.next
+        )
+        XCTAssertEqual(
+            sut[2],
+            sut.root?.next?.next
+        )
     }
     
     func testDescription() {
         XCTAssertEqual(
             sut.description,
-            "[0, 1, 2, 3, 4, 5]"
+            "[0, 1, 2]"
         )
-    }
-}
-
-extension LinkedListTest {
-    
-    var allNodes: [ListNode<Int>] {
-        [node0, node1, node2, node3, node4, node5]
     }
 }

@@ -14,6 +14,17 @@ class LinkedList<T> {
     init(root: ListNode<T>?) {
         self.root = root
     }
+    
+    func count() -> Int {
+        var currentNode = root
+        var count = 0
+        while currentNode != nil {
+            count += 1
+            currentNode = currentNode?.next
+        }
+        
+        return count
+    }
 }
 
 extension LinkedList {
