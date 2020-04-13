@@ -1,3 +1,3 @@
 # DaAl
 
-A description of this package.
+Data Structure - Algorithm practices
