@@ -25,6 +25,38 @@ class LinkedList<T> {
         
         return count
     }
+    
+    func insert(
+        _ value: T,
+        at index: Int
+    ) {
+        guard let root = self.root, index >= 0 else { return }
+        
+        guard index > 0 else {
+            return self.root = ListNode(
+                value: value,
+                next: root
+            )
+        }
+        
+        var currentNode = root
+        var currentIndex = 0
+        
+        while currentIndex < index {
+            if currentIndex + 1 == index {
+                currentNode.next = ListNode(
+                    value: value,
+                    next: currentNode.next
+                )
+                break
+            } else if let nextNode = currentNode.next {
+                currentNode = nextNode
+                currentIndex += 1
+            } else {
+                break
+            }
+        }
+    }
 }
 
 extension LinkedList {

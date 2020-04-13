@@ -44,6 +44,116 @@ class LinkedListTest: XCTestCase {
         )
     }
     
+    func testInsertAtRoot() {
+        let count = sut.count()
+        
+        sut.insert(
+            -999,
+            at: 0
+        )
+        
+        XCTAssertEqual(
+            sut.count(),
+            count + 1
+        )
+        
+        XCTAssertEqual(
+            sut[1],
+            node0
+        )
+        
+        XCTAssertEqual(
+            sut.root?.value,
+            -999
+        )
+    }
+    
+    func testInsertAtMiddle() {
+        let count = sut.count()
+        
+        sut.insert(
+            -999,
+            at: 1
+        )
+        
+        XCTAssertEqual(
+            sut.count(),
+            count + 1
+        )
+        
+        XCTAssertEqual(
+            sut[2],
+            node1
+        )
+        
+        XCTAssertEqual(
+            sut[1]?.value,
+            -999
+        )
+    }
+    
+    func testInsertAtTail() {
+        let count = sut.count()
+        
+        sut.insert(
+            -999,
+            at: 2
+        )
+        
+        XCTAssertEqual(
+            sut.count(),
+            count + 1
+        )
+        
+        XCTAssertEqual(
+            sut[3],
+            node2
+        )
+        
+        XCTAssertEqual(
+            sut[2]?.value,
+            -999
+        )
+    }
+    
+    func testInsertWhereItBelowListBound() {
+        let count = sut.count()
+        
+        sut.insert(
+            -999,
+            at: -1
+        )
+        
+        XCTAssertEqual(
+            sut.count(),
+            count
+        )
+        
+        XCTAssertEqual(
+            sut.root,
+            node0
+        )
+    }
+    
+    func testInsertWhereItAboveListBound() {
+        let count = sut.count()
+        
+        sut.insert(
+            -999,
+            at: count + 1
+        )
+        
+        XCTAssertEqual(
+            sut.count(),
+            count
+        )
+        
+        XCTAssertEqual(
+            sut[2],
+            node2
+        )
+    }
+    
     func testSubscript() {
         XCTAssertNil(
             sut[.min]
