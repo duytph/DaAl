@@ -9,9 +9,9 @@ import Foundation
 
 class TreeNode<T> {
     
-    let value: T
-    let left: TreeNode<T>?
-    let right: TreeNode<T>?
+    var value: T
+    var left: TreeNode<T>?
+    var right: TreeNode<T>?
     
     init(
         value: T,
