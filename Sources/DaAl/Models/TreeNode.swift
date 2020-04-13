@@ -1,6 +1,6 @@
 //
 //  TreeNode.swift
-//  
+//  DaAl
 //
 //  Created by Duy Trần on 4/13/20.
 //
@@ -21,5 +21,14 @@ class TreeNode<T> {
         self.value = value
         self.left = left
         self.right = right
+    }
+}
+
+extension TreeNode: Equatable where T: Equatable {
+    
+    static func == (lhs: TreeNode<T>, rhs: TreeNode<T>) -> Bool {
+        lhs.value == rhs.value
+            && lhs.left === rhs.left
+            && lhs.right === rhs.right
     }
 }
