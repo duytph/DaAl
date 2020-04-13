@@ -15,3 +15,20 @@ class LinkedList<T> {
         self.root = root
     }
 }
+
+extension LinkedList: CustomStringConvertible {
+    
+    var description: String {
+        guard let root = self.root else { return "[]" }
+        
+        var result = "\(root.value)"
+        var currentNode = root.next
+        
+        while let node = currentNode {
+            result += ", \(node.value)"
+            currentNode = currentNode?.next
+        }
+        
+        return "[" + result + "]"
+    }
+}

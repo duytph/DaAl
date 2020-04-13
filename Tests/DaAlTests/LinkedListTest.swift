@@ -42,4 +42,11 @@ class LinkedListTest: XCTestCase {
             node0
         )
     }
+    
+    func testDescription() {
+        XCTAssertEqual(
+            sut.description,
+            "[0, 1, 2, 3, 4, 5]"
+        )
+    }
 }
