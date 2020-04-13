@@ -1,6 +1,6 @@
 //
 //  ListNode.swift
-//  Daal
+//  DaAl
 //
 //  Created by Duy Trần on 4/13/20.
 //
@@ -18,5 +18,12 @@ class ListNode<T> {
     ) {
         self.value = value
         self.next = next
+    }
+}
+
+extension ListNode: Equatable where T: Equatable {
+    
+    static func == (lhs: ListNode<T>, rhs: ListNode<T>) -> Bool {
+        lhs.value == rhs.value && lhs.next === rhs.next
     }
 }
