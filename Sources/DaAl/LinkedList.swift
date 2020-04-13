@@ -16,6 +16,27 @@ class LinkedList<T> {
     }
 }
 
+extension LinkedList {
+    
+    subscript(index: Int) -> ListNode<T>? {
+        guard index >= 0 else { return nil }
+        
+        var currentNode = root
+        var currentIndex = 0
+        
+        while currentIndex < index {
+            if let nextNode = currentNode?.next {
+                currentNode = nextNode
+                currentIndex += 1
+            } else {
+                return nil
+            }
+        }
+        
+        return currentNode
+    }
+}
+
 extension LinkedList: CustomStringConvertible {
     
     var description: String {

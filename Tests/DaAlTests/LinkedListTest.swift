@@ -43,10 +43,29 @@ class LinkedListTest: XCTestCase {
         )
     }
     
+    func testSubscript() {
+        XCTAssertNil(sut[.min])
+        XCTAssertNil(sut[.max])
+        
+        allNodes.enumerated().forEach { (index, node) in
+            XCTAssertEqual(
+                sut[index]!,
+                node
+            )
+        }
+    }
+    
     func testDescription() {
         XCTAssertEqual(
             sut.description,
             "[0, 1, 2, 3, 4, 5]"
         )
+    }
+}
+
+extension LinkedListTest {
+    
+    var allNodes: [ListNode<Int>] {
+        [node0, node1, node2, node3, node4, node5]
     }
 }
