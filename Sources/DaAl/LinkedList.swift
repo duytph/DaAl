@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LinkedList<T> {
+final class LinkedList<T> {
     
     var root: ListNode<T>?
     

@@ -10,7 +10,7 @@ import DaAl
 
 import XCTest
 
-class LinkedListTest: XCTestCase {
+final class LinkedListTest: XCTestCase {
     
     var node2: ListNode<Int>!
     var node1: ListNode<Int>!
