@@ -224,6 +224,31 @@ class LinkedListTest: XCTestCase {
         )
     }
     
+    func testIndexOfRoot() {
+        XCTAssertEqual(
+            sut.index(of: node0.value),
+            0
+        )
+    }
+    
+    func testIndexOfMiddle() {
+        XCTAssertEqual(
+            sut.index(of: node1.value),
+            1
+        )
+    }
+    
+    func testIndexOfTail() {
+        XCTAssertEqual(
+            sut.index(of: node2.value),
+            2
+        )
+    }
+    
+    func testIndexOfNonExistingValue() {
+        XCTAssertNil(sut.index(of: -1))
+    }
+    
     func testSubscript() {
         XCTAssertNil(
             sut[.min]

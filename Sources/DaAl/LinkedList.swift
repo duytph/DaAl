@@ -82,6 +82,25 @@ class LinkedList<T> {
     }
 }
 
+extension LinkedList where T: Comparable {
+    
+    func index(of value: T) -> Int? {
+        var currentNode = root
+        var currentIndex = 0
+        
+        while let node = currentNode {
+            if node.value == value {
+                return currentIndex
+            } else {
+                currentNode = node.next
+                currentIndex += 1
+            }
+        }
+        
+        return nil
+    }
+}
+
 extension LinkedList {
     
     subscript(index: Int) -> ListNode<T>? {
