@@ -57,6 +57,29 @@ class LinkedList<T> {
             }
         }
     }
+    
+    func remove(at index: Int) {
+        guard let root = self.root, index >= 0 else { return }
+        
+        guard index > 0 else {
+            return self.root = root.next
+        }
+        
+        var currentNode = root
+        var currentIndex = 0
+        
+        while currentIndex < index {
+            if currentIndex + 1 == index {
+                currentNode.next = currentNode.next?.next
+                break
+            } else if let nextNode = currentNode.next {
+                currentNode = nextNode
+                currentIndex += 1
+            } else {
+                break
+            }
+        }
+    }
 }
 
 extension LinkedList {
