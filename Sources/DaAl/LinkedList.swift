@@ -65,18 +65,22 @@ final class LinkedList<T> {
         }
     }
     
-    func remove(at index: Int) {
-        guard let root = self.root, index >= 0 else { return }
+    func remove(at index: Int) -> ListNode<T>? {
+        guard let root = self.root, index >= 0 else { return nil }
         
         guard index > 0 else {
-            return self.root = root.next
+            let removedNode = self.root
+            self.root = root.next
+            return removedNode
         }
         
         var currentNode = root
         var currentIndex = 0
+        var removedNode: ListNode<T>?
         
         while currentIndex < index {
             if currentIndex + 1 == index {
+                removedNode = currentNode.next
                 currentNode.next = currentNode.next?.next
                 break
             } else if let nextNode = currentNode.next {
@@ -86,6 +90,8 @@ final class LinkedList<T> {
                 break
             }
         }
+        
+        return removedNode
     }
 }
 

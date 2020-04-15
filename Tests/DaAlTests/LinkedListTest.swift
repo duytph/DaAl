@@ -157,7 +157,10 @@ final class LinkedListTest: XCTestCase {
     func testRemoveAtRoot() {
         let count = sut.count()
         
-        sut.remove(at: 0)
+        XCTAssertEqual(
+            sut.remove(at: 0),
+            node0
+        )
         
         XCTAssertEqual(
             sut.count(),
@@ -173,7 +176,10 @@ final class LinkedListTest: XCTestCase {
     func testRemoveAtMiddle() {
         let count = sut.count()
 
-        sut.remove(at: 1)
+        XCTAssertEqual(
+            sut.remove(at: 1),
+            node1
+        )
 
         XCTAssertEqual(
             sut.count(),
@@ -189,7 +195,10 @@ final class LinkedListTest: XCTestCase {
     func testRemoveAtTail() {
         let count = sut.count()
 
-        sut.remove(at: 2)
+        XCTAssertEqual(
+            sut.remove(at: 2),
+            node2
+        )
 
         XCTAssertEqual(
             sut.count(),
@@ -199,8 +208,10 @@ final class LinkedListTest: XCTestCase {
 
     func testRemoveWhereItBelowListBound() {
         let count = sut.count()
-
-        sut.remove(at: -1)
+        
+        XCTAssertNil(
+            sut.remove(at: -1)
+        )
 
         XCTAssertEqual(
             sut.count(),
@@ -215,8 +226,10 @@ final class LinkedListTest: XCTestCase {
 
     func testRemoveWhereItAboveListBound() {
         let count = sut.count()
-
-        sut.remove(at: count)
+        
+        XCTAssertNil(
+            sut.remove(at: count)
+        )
 
         XCTAssertEqual(
             sut.count(),
