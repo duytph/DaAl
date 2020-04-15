@@ -1,5 +1,5 @@
 //
-//  StackTest.swift
+//  StackTests.swift
 //  DaAl
 //
 //  Created by Duy Tran on 4/15/20.
@@ -10,7 +10,7 @@ import DaAl
 
 import XCTest
 
-final class StackTest: XCTestCase {
+final class StackTests: XCTestCase {
     
     var sut: Stack<Int>!
     

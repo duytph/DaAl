@@ -1,5 +1,5 @@
 //
-//  ArraySearchTest.swift
+//  ArraySearchingTests.swift
 //  DaAlTests
 //
 //  Created by Duy Tran on 4/14/20.
@@ -12,7 +12,7 @@ import DaAl
 
 import XCTest
 
-final class ArraySearchTest: XCTestCase {
+final class ArraySearchingTests: XCTestCase {
     
     func testBinarySearch() {
         let sut = [0, 1, 2, 3, 4, 5]

@@ -1,5 +1,5 @@
 //
-//  LinkedListTest.swift
+//  LinkedListTests.swift
 //  DaAlTests
 //
 //  Created by Duy Trần on 4/13/20.
@@ -10,7 +10,7 @@ import DaAl
 
 import XCTest
 
-final class LinkedListTest: XCTestCase {
+final class LinkedListTests: XCTestCase {
     
     var node2: ListNode<Int>!
     var node1: ListNode<Int>!

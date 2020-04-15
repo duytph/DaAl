@@ -1,5 +1,5 @@
 //
-//  QueueTest.swift
+//  QueueTests.swift
 //  DaAlTests
 //
 //  Created by Duy Tran on 4/15/20.
@@ -10,7 +10,7 @@ import DaAl
 
 import XCTest
 
-final class QueueTest: XCTestCase {
+final class QueueTests: XCTestCase {
     
     var sut: Queue<Int>!
     
