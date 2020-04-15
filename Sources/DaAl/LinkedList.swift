@@ -30,13 +30,22 @@ final class LinkedList<T> {
         _ value: T,
         at index: Int
     ) {
+        insert(
+            ListNode(value: value),
+            at: index
+        )
+    }
+    
+    func insert(
+        _ node: ListNode<T>,
+        at index: Int
+    ) {
         guard let root = self.root, index >= 0 else { return }
         
         guard index > 0 else {
-            return self.root = ListNode(
-                value: value,
-                next: root
-            )
+            node.next = self.root
+            self.root = node
+            return
         }
         
         var currentNode = root
@@ -44,10 +53,8 @@ final class LinkedList<T> {
         
         while currentIndex < index {
             if currentIndex + 1 == index {
-                currentNode.next = ListNode(
-                    value: value,
-                    next: currentNode.next
-                )
+                node.next = currentNode.next
+                currentNode.next = node
                 break
             } else if let nextNode = currentNode.next {
                 currentNode = nextNode
