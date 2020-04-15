@@ -25,8 +25,19 @@ class ArraySortingTest: XCTestCase {
     }
     
     func testBubleSorted() {
+        sut.bubbleSorted()
+        
         XCTAssertEqual(
-            sut.sorted(),
+            sut,
+            sorted
+        )
+    }
+    
+    func testMergeSorted() {
+        sut.mergeSort()
+        
+        XCTAssertEqual(
+            sut,
             sorted
         )
     }
