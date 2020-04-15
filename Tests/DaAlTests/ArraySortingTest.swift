@@ -10,35 +10,60 @@ import DaAl
 
 import XCTest
 
-class ArraySortingTest: XCTestCase {
+final class ArraySortingTest: XCTestCase {
     
-    var sut: [Int]!
-    var sorted: [Int]!
+    var testCases: [TestCase]!
     
     override func setUp() {
-        sut = [3, 1, 4, 2, 0]
-        sorted = [0, 1, 2, 3, 4]
+        testCases = [
+            .init(
+                input: [3, 1, 4, 2, 0],
+                expected: [0, 1, 2, 3, 4]
+            ),
+            .init(
+                input: [54, 61, 21, 17, 71, 72, 17, 66, 56, 2],
+                expected: [2, 17, 17, 21, 54, 56, 61, 66, 71, 72]
+            ),
+            .init(
+                input: [38, 69, -33, 40, 54, 43, -34, 94],
+                expected: [-34, -33, 38, 40, 43, 54, 69, 94]
+            )
+        ]
     }
     
     override func tearDown() {
-        sut = nil
+        testCases = nil
     }
     
     func testBubleSorted() {
-        sut.bubbleSorted()
-        
-        XCTAssertEqual(
-            sut,
-            sorted
-        )
+        for testCase in testCases {
+            var output = testCase.input
+            output.bubbleSorted()
+            
+            XCTAssertEqual(
+                output,
+                testCase.expected
+            )
+        }
     }
     
     func testMergeSorted() {
-        sut.mergeSort()
-        
-        XCTAssertEqual(
-            sut,
-            sorted
-        )
+        for testCase in testCases {
+            var output = testCase.input
+            output.mergeSorted()
+            
+            XCTAssertEqual(
+                output,
+                testCase.expected
+            )
+        }
+    }
+}
+
+extension ArraySortingTest {
+    
+    struct TestCase {
+        let input: [Int]
+        let expected: [Int]
     }
 }
