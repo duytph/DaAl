@@ -35,6 +35,15 @@ final class ArraySortingTest: XCTestCase {
         testCases = nil
     }
     
+    func testBubleSort() {
+        for testCase in testCases {
+            XCTAssertEqual(
+                testCase.input.bubbleSort(),
+                testCase.expected
+            )
+        }
+    }
+    
     func testBubleSorted() {
         for testCase in testCases {
             var output = testCase.input
@@ -42,6 +51,15 @@ final class ArraySortingTest: XCTestCase {
             
             XCTAssertEqual(
                 output,
+                testCase.expected
+            )
+        }
+    }
+    
+    func testMergeSort() {
+        for testCase in testCases {
+            XCTAssertEqual(
+                testCase.input.mergeSort(),
                 testCase.expected
             )
         }

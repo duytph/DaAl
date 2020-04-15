@@ -9,29 +9,51 @@ import Foundation
 
 extension Array where Element: Comparable {
     
-    mutating func bubbleSorted() {
-        guard count > 1 else { return }
+    // MARK: - Bubble Sort
+    
+    func bubbleSort() -> Self {
+        guard count > 1 else { return self }
         
-        for i in (startIndex ..< (endIndex - 1)) {
+        var result = self
+        
+        for i in (result.startIndex ..< (result.endIndex - 1)) {
             for j in ((i + 1) ..< endIndex) {
-                if self[i] > self[j] {
-                    self.swapAt(i, j)
+                if result[i] > result[j] {
+                    result.swapAt(i, j)
                 }
             }
         }
+        
+        return result
+    }
+    
+    mutating func bubbleSorted() {
+        self = self.bubbleSort()
+    }
+    
+    // MARK: - Merge Sort
+    
+    func mergeSort() -> Self {
+        guard count > 1 else { return self }
+        
+        let midIndex = self.count / 2
+        
+        let leftArray = Array(
+            self[startIndex ..< midIndex]
+        )
+            .mergeSort()
+        
+        let rightArray = Array(
+            self[midIndex ..< endIndex]
+        )
+            .mergeSort()
+        
+        return leftArray.merge(with: rightArray)
     }
     
     mutating func mergeSorted() {
-        guard count > 1 else { return }
-        
-        let midIndex = (startIndex + endIndex) / 2
-        let leftArray = self[startIndex ..< midIndex].sorted()
-        let rightArray = self[midIndex ..< endIndex].sorted()
-        
-        self = leftArray.merge(with: rightArray)
+        self = self.mergeSort()
     }
-    
-    // MARK: - Ultilities
     
     private func merge(with otherArray: [Element]) -> [Element] {
         var result = [Element]()
