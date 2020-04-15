@@ -9,7 +9,7 @@ import Foundation
 
 final class LinkedList<T> {
     
-    var root: ListNode<T>?
+    private(set) var root: ListNode<T>?
     
     init(root: ListNode<T>?) {
         self.root = root
