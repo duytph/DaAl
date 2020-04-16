@@ -156,4 +156,60 @@ extension Array where Element: Comparable {
 
         return i
     }
+    
+    // MARK; - Quick Sort By Hoare
+    
+    mutating func quickSortedByHoare() {
+        quickSortedByHoare(
+            low: 0,
+            high: count - 1
+        )
+    }
+    
+    private mutating func quickSortedByHoare(
+        low: Int,
+        high: Int
+    ) {
+        guard count > 1 else { return }
+        
+        guard low < high else { return }
+        
+        let pivotIndex = paritionByHoare(
+            low: low,
+            high: high
+        )
+        
+        quickSortedByHoare(
+            low: low,
+            high: pivotIndex
+        )
+        
+        quickSortedByHoare(
+            low: pivotIndex + 1,
+            high: high
+        )
+    }
+    
+    @discardableResult
+    private mutating func paritionByHoare(
+        low: Int,
+        high: Int
+    ) -> Int {
+        let pivotIndex = (low + high) / 2
+        let pivot = self[pivotIndex]
+        
+        var leftIndex = low - 1
+        var rightIndex = high + 1
+        
+        while true {
+            repeat { leftIndex += 1 } while self[leftIndex] < pivot
+            repeat { rightIndex -= 1 } while self[rightIndex] > pivot
+            
+            if leftIndex < rightIndex {
+                swapAt(leftIndex, rightIndex)
+            } else {
+                return rightIndex
+            }
+        }
+    }
 }

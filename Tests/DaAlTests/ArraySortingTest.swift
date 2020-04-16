@@ -92,6 +92,18 @@ final class ArraySortingTest: XCTestCase {
             )
         }
     }
+    
+    func testQuickSortByHoare() {
+        for testCase in testCases {
+            var output = testCase.input
+            output.quickSortedByHoare()
+            
+            XCTAssertEqual(
+                output,
+                testCase.expected
+            )
+        }
+    }
 }
 
 extension ArraySortingTest {
