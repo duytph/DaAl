@@ -17,6 +17,10 @@ final class ArraySortingTest: XCTestCase {
     override func setUp() {
         testCases = [
             .init(
+                input: [1, 2, 0],
+                expected: [0, 1, 2]
+            ),
+            .init(
                 input: [3, 1, 4, 2, 0],
                 expected: [0, 1, 2, 3, 4]
             ),
@@ -69,6 +73,18 @@ final class ArraySortingTest: XCTestCase {
         for testCase in testCases {
             var output = testCase.input
             output.mergeSorted()
+            
+            XCTAssertEqual(
+                output,
+                testCase.expected
+            )
+        }
+    }
+    
+    func testQuickSortByLomuto() {
+        for testCase in testCases {
+            var output = testCase.input
+            output.quickSortedByLomuto()
             
             XCTAssertEqual(
                 output,

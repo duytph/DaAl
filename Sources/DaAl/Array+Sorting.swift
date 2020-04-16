@@ -102,4 +102,58 @@ extension Array where Element: Comparable {
         
         return result
     }
+    
+    // MARK; - Quick Sort By Lomuto
+    
+    mutating func quickSortedByLomuto() {
+        quickSortedByLomuto(
+            low: 0,
+            high: count - 1
+        )
+    }
+    
+    private mutating func quickSortedByLomuto(
+        low: Int,
+        high: Int
+    ) {
+        guard count > 1 else { return }
+        
+        guard low < high else { return }
+        
+        let pivotIndex = partitionByLomuto(
+            low: low,
+            high: high
+        )
+        
+        quickSortedByLomuto(
+            low: low,
+            high: pivotIndex - 1
+        )
+        
+        quickSortedByLomuto(
+            low: pivotIndex + 1,
+            high: high
+        )
+    }
+    
+    @discardableResult
+    private mutating func partitionByLomuto(
+        low: Int,
+        high: Int
+    ) -> Int {
+        let pivot = self[high]
+
+        var i = low
+
+        for j in low ..< high {
+            if self[j] < pivot {
+                swapAt(i, j)
+                i += 1
+            }
+        }
+
+        swapAt(i, high)
+
+        return i
+    }
 }
