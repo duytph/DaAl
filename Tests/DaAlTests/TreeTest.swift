@@ -19,6 +19,8 @@ final class TreeTest: XCTestCase {
     var node0: TreeNode<Int>!
     var sut: Tree<Int>!
     
+    // MARK: - Life Cycle
+    
     override func setUp() {
         node4 = TreeNode(value: 4)
         node3 = TreeNode(value: 3)
@@ -39,23 +41,25 @@ final class TreeTest: XCTestCase {
         sut = nil
     }
     
-    func testInorderTraversal() {
+    // MARK: - Depth First Traversal
+    
+    func testInorderDepthFirstTraversal() {
         XCTAssertEqual(
-            sut.inorderTraversal(),
+            sut.inorderDepthFirstTraversal(),
             "[3, 1, 4, 0, 2]"
         )
     }
     
-    func testPreorderTraversal() {
+    func testPreorderDepthFirstTraversal() {
         XCTAssertEqual(
-            sut.preorderTraversal(),
+            sut.preorderDepthFirstTraversal(),
             "[0, 1, 3, 4, 2]"
         )
     }
     
-    func testPostorderTraversal() {
+    func testPostorderDepthFirstTraversal() {
         XCTAssertEqual(
-            sut.postorderTraversal(),
+            sut.postorderDepthFirstTraversal(),
             "[3, 4, 1, 2, 0]"
         )
     }

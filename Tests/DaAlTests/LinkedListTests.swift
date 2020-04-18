@@ -18,6 +18,8 @@ final class LinkedListTests: XCTestCase {
     
     var sut: LinkedList<Int>!
     
+    // MARK: - Life Cycle
+    
     override func setUp() {
         node2 = ListNode(value: 2)
         node1 = ListNode(value: 1, next: node2)
@@ -29,6 +31,8 @@ final class LinkedListTests: XCTestCase {
     override func tearDown() {
         sut = nil
     }
+    
+    // MARK: - General
     
     func testRoot() {
         XCTAssertEqual(
@@ -43,6 +47,8 @@ final class LinkedListTests: XCTestCase {
             3
         )
     }
+    
+    // MARK: - Insert 
     
     func testInsertAtRoot() {
         let count = sut.count()
@@ -154,6 +160,8 @@ final class LinkedListTests: XCTestCase {
         )
     }
     
+    // MARK: - Remove
+    
     func testRemoveAtRoot() {
         let count = sut.count()
         
@@ -237,6 +245,8 @@ final class LinkedListTests: XCTestCase {
         )
     }
     
+    // MARK: - Index
+    
     func testIndexOfRoot() {
         XCTAssertEqual(
             sut.index(of: node0.value),
@@ -261,6 +271,8 @@ final class LinkedListTests: XCTestCase {
     func testIndexOfNonExistingValue() {
         XCTAssertNil(sut.index(of: -1))
     }
+    
+    // MARK: - Subscript
     
     func testSubscript() {
         XCTAssertNil(

@@ -15,11 +15,13 @@ class Tree<T> {
         self.root = root
     }
     
-    func inorderTraversal() -> String {
+    // MARK: - Inorder Depth First Traversal
+    
+    func inorderDepthFirstTraversal() -> String {
         guard let root = root else { return "" }
         
         var result = ""
-        inorderTraversal(
+        inorderDepthFirstTraversal(
             of: root,
             to: &result
         )
@@ -27,11 +29,34 @@ class Tree<T> {
         return "[\(result)]"
     }
     
-    func preorderTraversal() -> String {
+    private func inorderDepthFirstTraversal(
+           of node: TreeNode<T>,
+           to result: inout String
+       ) {
+           if let left = node.left {
+               inorderDepthFirstTraversal(
+                   of : left,
+                   to: &result
+               )
+           }
+           
+           result += result.isEmpty ? "\(node.value)" : ", \(node.value)"
+           
+           if let right = node.right {
+               inorderDepthFirstTraversal(
+                   of : right,
+                   to: &result
+               )
+           }
+       }
+    
+    // MARK: - Preorder Depth First Traversal
+    
+    func preorderDepthFirstTraversal() -> String {
         guard let root = root else { return "" }
         
         var result = ""
-        preorderTraversal(
+        preorderDepthFirstTraversal(
             of: root,
             to: &result
         )
@@ -39,88 +64,68 @@ class Tree<T> {
         return "[\(result)]"
     }
     
-    func postorderTraversal() -> String {
+    private func preorderDepthFirstTraversal(
+        of node: TreeNode<T>,
+        to result: inout String
+    ) {
+        result += result.isEmpty ? "\(node.value)" : ", \(node.value)"
+        
+        if let left = node.left {
+            preorderDepthFirstTraversal(
+                of : left,
+                to: &result
+            )
+        }
+        
+        if let right = node.right {
+            preorderDepthFirstTraversal(
+                of : right,
+                to: &result
+            )
+        }
+    }
+    
+    // MARK: - Postorder Depth First Traversal
+    
+    func postorderDepthFirstTraversal() -> String {
         guard let root = root else { return "" }
         
         var result = ""
-        postorderTraversal(
+        postorderDepthFirstTraversal(
             of: root,
             to: &result
         )
         
         return "[\(result)]"
+    }
+    
+    private func postorderDepthFirstTraversal(
+        of node: TreeNode<T>,
+        to result: inout String
+    ) {
+        if let left = node.left {
+            postorderDepthFirstTraversal(
+                of : left,
+                to: &result
+            )
+        }
+        
+        if let right = node.right {
+            postorderDepthFirstTraversal(
+                of : right,
+                to: &result
+            )
+        }
+        
+        result += result.isEmpty ? "\(node.value)" : ", \(node.value)"
     }
 }
 
-extension Tree {
-    
-    private func inorderTraversal(
-        of node: TreeNode<T>,
-        to result: inout String
-    ) {
-        if let left = node.left {
-            inorderTraversal(
-                of : left,
-                to: &result
-            )
-        }
-        
-        result += result.isEmpty ? "\(node.value)" : ", \(node.value)"
-        
-        if let right = node.right {
-            inorderTraversal(
-                of : right,
-                to: &result
-            )
-        }
-    }
-    
-    private func preorderTraversal(
-        of node: TreeNode<T>,
-        to result: inout String
-    ) {
-        result += result.isEmpty ? "\(node.value)" : ", \(node.value)"
-        
-        if let left = node.left {
-            preorderTraversal(
-                of : left,
-                to: &result
-            )
-        }
-        
-        if let right = node.right {
-            preorderTraversal(
-                of : right,
-                to: &result
-            )
-        }
-    }
-    
-    private func postorderTraversal(
-        of node: TreeNode<T>,
-        to result: inout String
-    ) {
-        if let left = node.left {
-            postorderTraversal(
-                of : left,
-                to: &result
-            )
-        }
-        
-        if let right = node.right {
-            postorderTraversal(
-                of : right,
-                to: &result
-            )
-        }
-        
-        result += result.isEmpty ? "\(node.value)" : ", \(node.value)"
-    }
-}
+// MARK: - CustomStringConvertible
 
 extension Tree: CustomStringConvertible {
     
     var description: String {
-        inorderTraversal()
+        inorderDepthFirstTraversal()
     }
 }
