@@ -14,6 +14,8 @@ final class StackTests: XCTestCase {
     
     var sut: Stack<Int>!
     
+    // MARK: - Life Cycle
+    
     override func setUp() {
         sut = Stack(
             list: [0, 1, 2]
@@ -24,6 +26,8 @@ final class StackTests: XCTestCase {
         sut = nil
     }
     
+    // MARK: - Push
+    
     func testPush() {
         sut.push(-1)
         
@@ -32,6 +36,8 @@ final class StackTests: XCTestCase {
             -1
         )
     }
+    
+    // MARK: - Pop
     
     func testPop() {
         XCTAssertEqual(
