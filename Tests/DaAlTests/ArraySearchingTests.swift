@@ -14,14 +14,79 @@ import XCTest
 
 final class ArraySearchingTests: XCTestCase {
     
+    var testCases: [TestCase]!
+    
+    // MARK: - Life Cycle
+    
+    override func setUp() {
+        testCases = [
+            .init(
+                input: (
+                    [],
+                    1
+                ),
+                expected: nil
+            ),
+            .init(
+                input: (
+                    [1],
+                    1
+                ),
+                expected: 0
+            ),
+            .init(
+                input: (
+                    [3, 6, 12, 13, 18],
+                    1
+                ),
+                expected: nil
+            ),
+            .init(
+                input: (
+                    [9, 11, 13, 15, 17],
+                    13
+                ),
+                expected: 2
+            ),
+            .init(
+                input: (
+                    [1, 3, 4, 16, 18],
+                    18
+                ),
+                expected: 4
+            )
+        ]
+    }
+    
+    override func tearDown() {
+        testCases = nil
+    }
+    
+    // MARK: - Binary Search
+    
     func testBinarySearch() {
-        let sut = [0, 1, 2, 3, 4, 5]
-        
-        for (offset, element) in sut.enumerated() {
+        for testCase in testCases {
             XCTAssertEqual(
-                sut.binarySearch(value: element),
-                offset
+                testCase
+                    .input
+                    .array
+                    .binarySearch(
+                        value: testCase
+                            .input
+                            .searchingValue
+                ),
+                testCase.expected
             )
         }
+    }
+}
+
+// MARK: - Model
+
+extension ArraySearchingTests {
+    
+    struct TestCase {
+        let input: (array: [Int], searchingValue: Int)
+        let expected: Int?
     }
 }
