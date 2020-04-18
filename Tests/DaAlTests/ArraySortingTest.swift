@@ -14,6 +14,8 @@ final class ArraySortingTest: XCTestCase {
     
     var testCases: [TestCase]!
     
+    // MARK: - Life Cycle
+    
     override func setUp() {
         testCases = [
             .init(
@@ -39,6 +41,8 @@ final class ArraySortingTest: XCTestCase {
         testCases = nil
     }
     
+    // MARK: - Buble Sort
+    
     func testBubleSort() {
         for testCase in testCases {
             XCTAssertEqual(
@@ -60,6 +64,8 @@ final class ArraySortingTest: XCTestCase {
         }
     }
     
+    // MARK: - Merge Sort
+    
     func testMergeSort() {
         for testCase in testCases {
             XCTAssertEqual(
@@ -80,6 +86,8 @@ final class ArraySortingTest: XCTestCase {
             )
         }
     }
+    
+    // MARK: - Quick Sort
     
     func testQuickSortByLomuto() {
         for testCase in testCases {
@@ -105,6 +113,8 @@ final class ArraySortingTest: XCTestCase {
         }
     }
 }
+
+// MARK: - Model
 
 extension ArraySortingTest {
     
