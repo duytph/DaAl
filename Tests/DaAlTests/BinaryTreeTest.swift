@@ -1,5 +1,5 @@
 //
-//  TreeTest.swift
+//  BinaryTreeTest.swift
 //  DaAlTests
 //
 //  Created by Duy Tran on 4/16/20.
@@ -10,14 +10,14 @@ import DaAl
 
 import XCTest
 
-final class TreeTest: XCTestCase {
+final class BinaryTreeTest: XCTestCase {
     
     var node4: TreeNode<Int>!
     var node3: TreeNode<Int>!
     var node2: TreeNode<Int>!
     var node1: TreeNode<Int>!
     var node0: TreeNode<Int>!
-    var sut: Tree<Int>!
+    var sut: BinaryTree<Int>!
     
     // MARK: - Life Cycle
     
@@ -28,7 +28,7 @@ final class TreeTest: XCTestCase {
         node1 = TreeNode(value: 1, left: node3, right: node4)
         node0 = TreeNode(value: 0, left: node1, right: node2)
         
-        sut = Tree(root: node0)
+        sut = BinaryTree(root: node0)
     }
     
     override func tearDown() {
