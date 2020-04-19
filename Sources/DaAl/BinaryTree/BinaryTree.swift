@@ -110,6 +110,6 @@ final class BinaryTree<T> {
 extension BinaryTree: CustomStringConvertible {
     
     var description: String {
-        inorderDepthFirstTraversal(from: root)
+        "[" + inorderDepthFirstTraversal(from: root) + "]"
     }
 }
