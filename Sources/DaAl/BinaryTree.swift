@@ -15,109 +15,93 @@ final class BinaryTree<T> {
         self.root = root
     }
     
-    // MARK: - Inorder Depth First Traversal
+    // MARK: - Traversal
     
-    func inorderDepthFirstTraversal() -> String {
-        guard let root = root else { return "" }
+    func inorderDepthFirstTraversal(
+        from node: BinaryTreeNode<T>?,
+        to traversal: String = ""
+    ) -> String {
+        guard let node = node else { return traversal }
         
-        var result = ""
-        inorderDepthFirstTraversal(
-            of: root,
-            to: &result
-        )
-        
-        return "[\(result)]"
-    }
-    
-    private func inorderDepthFirstTraversal(
-           of node: BinaryTreeNode<T>,
-           to result: inout String
-       ) {
-           if let left = node.left {
-               inorderDepthFirstTraversal(
-                   of : left,
-                   to: &result
-               )
-           }
-           
-           result += result.isEmpty ? "\(node.value)" : ", \(node.value)"
-           
-           if let right = node.right {
-               inorderDepthFirstTraversal(
-                   of : right,
-                   to: &result
-               )
-           }
-       }
-    
-    // MARK: - Preorder Depth First Traversal
-    
-    func preorderDepthFirstTraversal() -> String {
-        guard let root = root else { return "" }
-        
-        var result = ""
-        preorderDepthFirstTraversal(
-            of: root,
-            to: &result
-        )
-        
-        return "[\(result)]"
-    }
-    
-    private func preorderDepthFirstTraversal(
-        of node: BinaryTreeNode<T>,
-        to result: inout String
-    ) {
-        result += result.isEmpty ? "\(node.value)" : ", \(node.value)"
+        var result = traversal
         
         if let left = node.left {
-            preorderDepthFirstTraversal(
-                of : left,
-                to: &result
+            result = inorderDepthFirstTraversal(
+                from : left,
+                to: result
+            )
+        }
+        
+        result += result.isEmpty
+            ? "\(node.value)"
+            : ", \(node.value)"
+        
+        if let right = node.right {
+            result = inorderDepthFirstTraversal(
+                from : right,
+                to: result
+            )
+        }
+        
+        return result
+    }
+    
+    func preorderDepthFirstTraversal(
+        from node: BinaryTreeNode<T>?,
+        to traversal: String = ""
+    ) -> String {
+        guard let node = node else { return traversal }
+        
+        var result = traversal
+        
+        result += result.isEmpty
+            ? "\(node.value)"
+            : ", \(node.value)"
+        
+        if let left = node.left {
+            result = preorderDepthFirstTraversal(
+                from : left,
+                to: result
             )
         }
         
         if let right = node.right {
-            preorderDepthFirstTraversal(
-                of : right,
-                to: &result
+            result = preorderDepthFirstTraversal(
+                from : right,
+                to: result
             )
         }
+        
+        return result
     }
     
-    // MARK: - Postorder Depth First Traversal
-    
-    func postorderDepthFirstTraversal() -> String {
-        guard let root = root else { return "" }
+    func postorderDepthFirstTraversal(
+        from node: BinaryTreeNode<T>?,
+        to traversal: String = ""
+    ) -> String {
+        guard let node = node else { return traversal }
         
-        var result = ""
-        postorderDepthFirstTraversal(
-            of: root,
-            to: &result
-        )
+        var result = traversal
         
-        return "[\(result)]"
-    }
-    
-    private func postorderDepthFirstTraversal(
-        of node: BinaryTreeNode<T>,
-        to result: inout String
-    ) {
         if let left = node.left {
-            postorderDepthFirstTraversal(
-                of : left,
-                to: &result
+            result = postorderDepthFirstTraversal(
+                from : left,
+                to: result
             )
         }
         
         if let right = node.right {
-            postorderDepthFirstTraversal(
-                of : right,
-                to: &result
+            result = postorderDepthFirstTraversal(
+                from : right,
+                to: result
             )
         }
         
-        result += result.isEmpty ? "\(node.value)" : ", \(node.value)"
+        result += result.isEmpty
+            ? "\(node.value)"
+            : ", \(node.value)"
+        
+        return result
     }
 }
 
@@ -126,6 +110,6 @@ final class BinaryTree<T> {
 extension BinaryTree: CustomStringConvertible {
     
     var description: String {
-        inorderDepthFirstTraversal()
+        inorderDepthFirstTraversal(from: root)
     }
 }

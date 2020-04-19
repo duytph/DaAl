@@ -41,26 +41,26 @@ final class BinaryTreeTest: XCTestCase {
         sut = nil
     }
     
-    // MARK: - Depth First Traversal
+    // MARK: - Traversal
     
     func testInorderDepthFirstTraversal() {
         XCTAssertEqual(
-            sut.inorderDepthFirstTraversal(),
-            "[3, 1, 4, 0, 2]"
+            sut.inorderDepthFirstTraversal(from: sut.root),
+            "3, 1, 4, 0, 2"
         )
     }
     
     func testPreorderDepthFirstTraversal() {
         XCTAssertEqual(
-            sut.preorderDepthFirstTraversal(),
-            "[0, 1, 3, 4, 2]"
+            sut.preorderDepthFirstTraversal(from: sut.root),
+            "0, 1, 3, 4, 2"
         )
     }
     
     func testPostorderDepthFirstTraversal() {
         XCTAssertEqual(
-            sut.postorderDepthFirstTraversal(),
-            "[3, 4, 1, 2, 0]"
+            sut.postorderDepthFirstTraversal(from: sut.root),
+            "3, 4, 1, 2, 0"
         )
     }
 }
