@@ -1,5 +1,5 @@
 //
-//  Tree.swift
+//  BinaryTree.swift
 //  DaAl
 //
 //  Created by Duy Tran on 4/16/20.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Tree<T> {
+final class BinaryTree<T> {
     
     private(set) var root: TreeNode<T>?
     
@@ -123,7 +123,7 @@ class Tree<T> {
 
 // MARK: - CustomStringConvertible
 
-extension Tree: CustomStringConvertible {
+extension BinaryTree: CustomStringConvertible {
     
     var description: String {
         inorderDepthFirstTraversal()
