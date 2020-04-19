@@ -9,9 +9,9 @@ import Foundation
 
 final class BinaryTree<T> {
     
-    private(set) var root: TreeNode<T>?
+    private(set) var root: BinaryTreeNode<T>?
     
-    init(root: TreeNode<T>?) {
+    init(root: BinaryTreeNode<T>?) {
         self.root = root
     }
     
@@ -30,7 +30,7 @@ final class BinaryTree<T> {
     }
     
     private func inorderDepthFirstTraversal(
-           of node: TreeNode<T>,
+           of node: BinaryTreeNode<T>,
            to result: inout String
        ) {
            if let left = node.left {
@@ -65,7 +65,7 @@ final class BinaryTree<T> {
     }
     
     private func preorderDepthFirstTraversal(
-        of node: TreeNode<T>,
+        of node: BinaryTreeNode<T>,
         to result: inout String
     ) {
         result += result.isEmpty ? "\(node.value)" : ", \(node.value)"
@@ -100,7 +100,7 @@ final class BinaryTree<T> {
     }
     
     private func postorderDepthFirstTraversal(
-        of node: TreeNode<T>,
+        of node: BinaryTreeNode<T>,
         to result: inout String
     ) {
         if let left = node.left {

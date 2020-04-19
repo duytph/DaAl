@@ -1,5 +1,5 @@
 //
-//  TreeNode.swift
+//  BinaryTreeNode.swift
 //  DaAl
 //
 //  Created by Duy Trần on 4/13/20.
@@ -7,16 +7,16 @@
 
 import Foundation
 
-final class TreeNode<T> {
+final class BinaryTreeNode<T> {
     
     var value: T
-    var left: TreeNode<T>?
-    var right: TreeNode<T>?
+    var left: BinaryTreeNode<T>?
+    var right: BinaryTreeNode<T>?
     
     init(
         value: T,
-        left: TreeNode<T>? = nil,
-        right: TreeNode<T>? = nil
+        left: BinaryTreeNode<T>? = nil,
+        right: BinaryTreeNode<T>? = nil
     ) {
         self.value = value
         self.left = left
@@ -24,9 +24,9 @@ final class TreeNode<T> {
     }
 }
 
-extension TreeNode: Equatable where T: Equatable {
+extension BinaryTreeNode: Equatable where T: Equatable {
     
-    static func == (lhs: TreeNode<T>, rhs: TreeNode<T>) -> Bool {
+    static func == (lhs: BinaryTreeNode<T>, rhs: BinaryTreeNode<T>) -> Bool {
         lhs.value == rhs.value
             && lhs.left === rhs.left
             && lhs.right === rhs.right

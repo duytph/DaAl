@@ -12,21 +12,21 @@ import XCTest
 
 final class BinaryTreeTest: XCTestCase {
     
-    var node4: TreeNode<Int>!
-    var node3: TreeNode<Int>!
-    var node2: TreeNode<Int>!
-    var node1: TreeNode<Int>!
-    var node0: TreeNode<Int>!
+    var node4: BinaryTreeNode<Int>!
+    var node3: BinaryTreeNode<Int>!
+    var node2: BinaryTreeNode<Int>!
+    var node1: BinaryTreeNode<Int>!
+    var node0: BinaryTreeNode<Int>!
     var sut: BinaryTree<Int>!
     
     // MARK: - Life Cycle
     
     override func setUp() {
-        node4 = TreeNode(value: 4)
-        node3 = TreeNode(value: 3)
-        node2 = TreeNode(value: 2)
-        node1 = TreeNode(value: 1, left: node3, right: node4)
-        node0 = TreeNode(value: 0, left: node1, right: node2)
+        node4 = BinaryTreeNode(value: 4)
+        node3 = BinaryTreeNode(value: 3)
+        node2 = BinaryTreeNode(value: 2)
+        node1 = BinaryTreeNode(value: 1, left: node3, right: node4)
+        node0 = BinaryTreeNode(value: 0, left: node1, right: node2)
         
         sut = BinaryTree(root: node0)
     }
